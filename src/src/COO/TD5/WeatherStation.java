@@ -3,6 +3,7 @@ package COO.TD5;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 
@@ -13,7 +14,7 @@ public class WeatherStation extends Subject {
     private List<Observer> myObservers;
 
 
-    public WeatherStation() {
+    public WeatherStation() throws InterruptedException {
         this.myObservers = new ArrayList<Observer>();
         this.mySensors = new ArrayList<Sensor>();
 
@@ -24,6 +25,7 @@ public class WeatherStation extends Subject {
             System.out.println("Weather update : ");
             System.out.println("Temp = " + mySensors.get(0).readValues());
             System.out.println("Wind = " + mySensors.get(1).readValues());
+            TimeUnit.SECONDS.sleep(10);
         }
     }
 

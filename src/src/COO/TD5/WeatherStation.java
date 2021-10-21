@@ -22,7 +22,8 @@ public class WeatherStation extends Subject {
 
         while (true) {
             System.out.println("Weather update : ");
-            System.out.println("Temp = " + );
+            System.out.println("Temp = " + mySensors.get(0).readValues());
+            System.out.println("Wind = " + mySensors.get(1).readValues());
         }
     }
 

@@ -1,17 +1,13 @@
 package COO.TD5;
 
-import java.util.*;
 
 /**
  * 
  */
-public class Sensor {
+public abstract class Sensor {
 
-    /**
-     * Default constructor
-     */
     public Sensor() {
     }
 
-
+    public abstract int readValues();
 }

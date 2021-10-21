@@ -11,17 +11,27 @@ import java.util.concurrent.TimeUnit;
 public class WeatherStation extends Subject {
 
     private List<Sensor> mySensors;
-    private List<Observer> myObservers;
+    private List<Display> myObservers;
 
 
-    public WeatherStation() throws InterruptedException {
-        this.myObservers = new ArrayList<Observer>();
-        this.mySensors = new ArrayList<Sensor>();
+    public WeatherStation() {
+        this.myObservers = new ArrayList<>();
+        this.mySensors = new ArrayList<>();
 
         mySensors.add(new TemperatureSensor());
         mySensors.add(new WindSensor());
+    }
 
+    public void routine() throws InterruptedException {
         while (true) {
+            int value = mySensors.get(0).readValues();
+            if (value != mySensors.get(0).getOldValue()) {
+                for (Display display:
+                    myObservers) {
+                    display.update(); //TO FINISH
+                }
+                mySensors.get(0).setOldValue(value);
+            }
             System.out.println("Weather update : ");
             System.out.println("Temp = " + mySensors.get(0).readValues());
             System.out.println("Wind = " + mySensors.get(1).readValues());
